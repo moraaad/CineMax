@@ -1,0 +1,8 @@
+id,titolo,genere,regista,anno,durataMinuti,etaMinima
+1,Interstellar,Science Fiction,Christopher Nolan,2014,169,12
+2,Inception,Science Fiction,Christopher Nolan,2010,148,12
+3,Il Padrino,Crime,Francis Ford Coppola,1972,175,14
+4,La La Land,Musical,Damien Chazelle,2016,128,0
+5,Parasite,Thriller,Bong Joon-ho,2019,132,14
+6,The Dark Knight,Action,Christopher Nolan,2008,152,12
+7,Forrest Gump,Drama,Robert Zemeckis,1994,142,0
