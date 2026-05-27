@@ -26,5 +26,6 @@ replay_pid*
 # Markdown Files
 todo.md
 
-# Not excluding this jar
+# Not excluding
 !bin/CineMax.jar
+!doc/javadoc

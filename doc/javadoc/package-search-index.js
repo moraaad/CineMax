@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"cinemax"},{"l":"cinemax.model"},{"l":"cinemax.repository"},{"l":"cinemax.service"},{"l":"cinemax.ui"},{"l":"cinemax.util"}];updateSearchResults();
