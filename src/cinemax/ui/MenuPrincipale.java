@@ -150,19 +150,8 @@ public class MenuPrincipale {
             dataNascita = Input.leggiData("Data di nascita");
         }
 
-        // Hash password
-        String passwordCifrata;
         try {
-            passwordCifrata = Password.hashPassword(password);
-        } catch (Exception e) {
-            System.out.println("Errore durante la cifratura della password.");
-            Input.attendiInvio();
-            return;
-        }
-
-        // Salvataggio
-        try {
-            authService.registraUtente(nome, cognome, username, passwordCifrata, dataNascita, domicilio, Ruolo.CLIENTE);
+            authService.registraUtente(nome, cognome, username, password, dataNascita, domicilio, Ruolo.CLIENTE);
             System.out.println("\n[OK] Registrazione completata! Puoi ora effettuare il login.");
         } catch (Exception e) {
             System.out.println("\n[ERRORE] " + e.getMessage());
@@ -378,18 +367,12 @@ public class MenuPrincipale {
         stampaLinea();
     }
 
-    // =========================================================
-    // METODI UTILITY
-    // =========================================================
-
     /**
      * Legge una stringa opzionale (può essere vuota).
      *
      * @return stringa inserita (può essere "")
      */
     static String leggiStringaOpzionale() {
-        Scanner sc = new Scanner(System.in);
-        // Usa System.in direttamente per consentire input vuoto
         try {
             String line = new BufferedReader(
                     new InputStreamReader(System.in)).readLine();

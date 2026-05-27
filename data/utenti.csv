@@ -7,5 +7,3 @@ id,nome,cognome,username,password,dataNascita,domicilio,ruolo
 6,Anna,Gallo,bigl3,LqF1VtoMaNhiVbnY08fnOQ==:pdTM3DxqklQCwXqCUkv/Yvn8FoTMzuD44skBgBtSpN4=,,Milano,bigliettaio
 7,Paolo,Ferrari,bigl4,WWBYahC9DDLUFgxT7n7Fhg==:3OdqwEjev5dZ+42RxdAf+BFSpWUg1VLfxfNX+7RjHXI=,,Milano,bigliettaio
 8,Davide,Bruno,davidebruno0,oOayVXwR2R39h/PvF+qUiw==:IvlbZ2iQwcGJc3qd7fLzyqdeqyZMt8EJnSh/3ITQjZI=,,Monza,cliente
-9,Giorgio,Muratore,giorgio111,dnNcsSxDhGEamtOA97wDwA==:TIvFotrm48nrkzMII70u0ANgWtdcvdyf2+UwCYxnUKw=,,Palermo,CLIENTE
-10,utente1,utente1,utente1,FeRqwOCKRQ2gGF5Fm0mk0g==:bJUgGpClS21yxd20Vcg2mYEmn53yzjJ6cZZ+jvOxzlA=,1990-01-01,Milano,CLIENTE

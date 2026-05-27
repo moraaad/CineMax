@@ -266,7 +266,6 @@ public class MenuProiezionista {
         // Aggiornamento nel repository
         proiezione.setDataOra(nuovaDataOra);
         proiezione.setCostoBiglietto(nuovoCosto);
-        proiezioneRepo.aggiorna(proiezioneRepo.trovaTutte());
         // Sostituzione in-place: ricarica, modifica, riscrivi
         List<Proiezione> tutte = proiezioneRepo.trovaTutte();
         for (int i = 0; i < tutte.size(); i++) {
