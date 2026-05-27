@@ -5,4 +5,6 @@ id,titolo,genere,regista,anno,durataMinuti,etaMinima
 4,La La Land,Musical,Damien Chazelle,2016,128,0
 5,Parasite,Thriller,Bong Joon-ho,2019,132,14
 6,The Dark Knight,Action,Christopher Nolan,2008,152,12
-7,Forrest Gump,Drama,Robert Zemeckis,1994,142,0
+7,Forrest Gump,Drama,Robert Zemeckis,1994,142,08,Mamma ho perso l'areo,Action,prova,1999,199,0
+8,Prova,Prova,Prova,1999,199,0
+8,Prova,Prova,Prova,1999,199,0

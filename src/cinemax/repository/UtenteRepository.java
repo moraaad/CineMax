@@ -45,6 +45,11 @@ public class UtenteRepository {
 
             String[] campi = righe.get(i);
 
+            if (campi.length < 8) {
+                System.err.println("Riga CSV non valida.");
+                continue;
+            }
+
             long id = Long.parseLong(campi[0]);
 
             String nome = campi[1];
@@ -52,8 +57,11 @@ public class UtenteRepository {
             String username = campi[3];
             String password = campi[4];
 
-            LocalDate dataNascita = DateUtils.convertiDataPerCSV(campi[5]);
+            LocalDate dataNascita = null;
 
+            if (!campi[5].isBlank()) {
+                dataNascita = DateUtils.convertiDataPerCSV(campi[5]);
+            }
             String domicilio = campi[6];
 
             Ruolo ruolo = Ruolo.formatoCsv(campi[7]);
@@ -126,9 +134,9 @@ public class UtenteRepository {
                 utente.getCognome(),
                 utente.getUsername(),
                 utente.getPassword(),
-                DateUtils.formatoCsv(
-                        utente.getDataNascita()
-                ),
+                utente.getDataNascita() == null
+                        ? ""
+                        : DateUtils.formatoCsv(utente.getDataNascita()),
                 utente.getDomicilio(),
                 utente.getRuolo().name()
         };

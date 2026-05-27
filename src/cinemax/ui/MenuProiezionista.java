@@ -89,7 +89,7 @@ public class MenuProiezionista {
         Mostra tutte le proiezioni in programma, ordinate per data.
      */
     private void visualizzaPalinsesto() {
-        MenuPrincipale.stampaSezione("PALINSESTO — TUTTE LE PROIEZIONI");
+        MenuPrincipale.stampaSezione("PALINSESTO - TUTTE LE PROIEZIONI");
 
         List<Proiezione> proiezioni = proiezioneService.trovaTutte();
 
@@ -99,7 +99,7 @@ public class MenuProiezionista {
             return;
         }
 
-        System.out.printf("  %-4s %-28s %-14s %-18s %-8s %s%n",
+        System.out.printf("  %-4s %-28s %-18s %-18s %-8s %s%n",
                 "ID", "FILM", "GENERE", "DATA/ORA", "COSTO", "PREN.");
         MenuPrincipale.stampaLinea();
 
@@ -148,6 +148,7 @@ public class MenuProiezionista {
             film = selezionaFilmEsistente();
         } else {
             film = inserisciNuovoFilm();
+            if(film != null) filmRepo.salva(film);
         }
 
         if (film == null) return;
@@ -163,10 +164,10 @@ public class MenuProiezionista {
         }
 
         // --- Costo biglietto ---
-        double costo = Input.leggiDouble("Costo biglietto (€): ");
+        double costo = Input.leggiDouble("Costo biglietto (EUR): ");
         while (costo <= 0) {
             System.out.println("[ERRORE] Il costo deve essere positivo.");
-            costo = Input.leggiDouble("Costo biglietto (€): ");
+            costo = Input.leggiDouble("Costo biglietto (EUR): ");
         }
 
         // --- Riepilogo e conferma ---
@@ -178,7 +179,7 @@ public class MenuProiezionista {
         System.out.printf("  Genere    : %s%n", film.getGenere());
         System.out.printf("  Regista   : %s%n", film.getRegista());
         System.out.printf("  Data/Ora  : %s%n", DateUtils.formatoUi(dataOra));
-        System.out.printf("  Biglietto : %.2f€%n", costo);
+        System.out.printf("  Biglietto : %.2fEUR%n", costo);
         MenuPrincipale.stampaLinea();
 
         if (!Input.leggiBoolean("Confermi l'inserimento?")) {
@@ -225,7 +226,7 @@ public class MenuProiezionista {
         System.out.println();
         System.out.printf("  Film corrente : %s%n", film != null ? film.getTitolo() : "?");
         System.out.printf("  Data/Ora att. : %s%n", proiezione.getDataOraFormattata());
-        System.out.printf("  Costo att.    : %.2f€%n", proiezione.getCostoBiglietto());
+        System.out.printf("  Costo att.    : %.2fEUR%n", proiezione.getCostoBiglietto());
         System.out.println();
 
         // --- Nuova data/ora ---
@@ -239,10 +240,10 @@ public class MenuProiezionista {
         }
 
         // --- Nuovo costo ---
-        double nuovoCosto = Input.leggiDouble("Nuovo costo biglietto (€): ");
+        double nuovoCosto = Input.leggiDouble("Nuovo costo biglietto (EURO): ");
         while (nuovoCosto <= 0) {
             System.out.println("Il costo deve essere positivo.");
-            nuovoCosto = Input.leggiDouble("Nuovo costo biglietto (€): ");
+            nuovoCosto = Input.leggiDouble("Nuovo costo biglietto (EURO): ");
         }
 
         // --- Riepilogo e conferma ---
@@ -250,10 +251,10 @@ public class MenuProiezionista {
         MenuPrincipale.stampaLinea();
         System.out.println("  RIEPILOGO MODIFICA");
         MenuPrincipale.stampaLinea();
-        System.out.printf("  Proiezione #%d — %s%n", id, film != null ? film.getTitolo() : "?");
-        System.out.printf("  Data/Ora   : %s  →  %s%n",
+        System.out.printf("  Proiezione #%d - %s%n", id, film != null ? film.getTitolo() : "?");
+        System.out.printf("  Data/Ora   : %s  ->  %s%n",
                 proiezione.getDataOraFormattata(), DateUtils.formatoUi(nuovaDataOra));
-        System.out.printf("  Costo      : %.2f€  →  %.2f€%n",
+        System.out.printf("  Costo      : %.2fEUR  ->  %.2fEUR%n",
                 proiezione.getCostoBiglietto(), nuovoCosto);
         MenuPrincipale.stampaLinea();
 
@@ -280,7 +281,6 @@ public class MenuProiezionista {
         Input.attendiInvio();
     }
 
-    // ELIMINA PROIEZIONE
     /**
      * Elimina una proiezione dal palinsesto.
      * <p>
@@ -319,7 +319,7 @@ public class MenuProiezionista {
         System.out.printf("  ID        : #%d%n", proiezione.getId());
         System.out.printf("  Film      : %s%n", film != null ? film.getTitolo() : "?");
         System.out.printf("  Data/Ora  : %s%n", proiezione.getDataOraFormattata());
-        System.out.printf("  Biglietto : %.2f€%n", proiezione.getCostoBiglietto());
+        System.out.printf("  Biglietto : %.2fEUR%n", proiezione.getCostoBiglietto());
         MenuPrincipale.stampaLinea();
 
         if (!Input.leggiBoolean("Sei sicuro di voler eliminare questa proiezione?")) {
@@ -333,7 +333,6 @@ public class MenuProiezionista {
         Input.attendiInvio();
     }
 
-    // METODI DI SUPPORTO
     /**
      * Permette al proiezionista di selezionare un film dall'archivio.
      *
@@ -349,7 +348,7 @@ public class MenuProiezionista {
 
         System.out.println();
         MenuPrincipale.stampaLinea();
-        System.out.printf("  %-4s %-28s %-14s %-6s %s%n",
+        System.out.printf("  %-4s %-28s %-18s %-6s %s%n",
                 "ID", "TITOLO", "GENERE", "ANNO", "DURATA");
         MenuPrincipale.stampaLinea();
 
@@ -357,7 +356,7 @@ public class MenuProiezionista {
             System.out.printf("  %-4d %-28s %-14s %-6d %d min%n",
                     f.getId(),
                     MenuPrincipale.troncaStringa(f.getTitolo(), 27),
-                    MenuPrincipale.troncaStringa(f.getGenere(), 13),
+                    MenuPrincipale.troncaStringa(f.getGenere(), 18),
                     f.getAnno(),
                     f.getDurataMinuti());
         }
@@ -462,7 +461,7 @@ public class MenuProiezionista {
     private void stampaMenu() {
         System.out.println();
         MenuPrincipale.stampaLinea();
-        System.out.println("  MENU PROIEZIONISTA  —  " +
+        System.out.println("  MENU PROIEZIONISTA  -  " +
                 proiezionista.getNome() + " " + proiezionista.getCognome());
         MenuPrincipale.stampaLinea();
         System.out.println("  [1] Visualizza palinsesto");

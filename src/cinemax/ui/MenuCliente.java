@@ -118,8 +118,8 @@ public class MenuCliente {
 
         double minCosto = -1, maxCosto = -1;
         if (Input.leggiBoolean("Filtrare per costo biglietto?")) {
-            minCosto = Input.leggiDouble("Costo minimo (€): ");
-            maxCosto = Input.leggiDouble("Costo massimo (€): ");
+            minCosto = Input.leggiDouble("Costo minimo (EUR): ");
+            maxCosto = Input.leggiDouble("Costo massimo (EUR): ");
         }
 
         List<Proiezione> risultati = filtraProiezioni(
@@ -205,7 +205,7 @@ public class MenuCliente {
         MenuPrincipale.stampaLinea();
         System.out.printf("  Film      : %s%n", film != null ? film.getTitolo() : "?");
         System.out.printf("  Data/Ora  : %s%n", p.getDataOraFormattata());
-        System.out.printf("  Biglietti : %d x %.2f€ = %.2f€%n",
+        System.out.printf("  Biglietti : %d x %.2fEUR = %.2fEUR%n",
                 numBiglietti, p.getCostoBiglietto(), totale);
         MenuPrincipale.stampaLinea();
 
@@ -251,7 +251,7 @@ public class MenuCliente {
             Film film     = p != null ? filmService.trovaPerId(p.getFilmId()) : null;
             double totale = p != null ? p.getCostoBiglietto() * pr.getNumeroBiglietti() : 0;
 
-            System.out.printf("  %-6d %-26s %-18s %-8d %.2f€%n",
+            System.out.printf("  %-6d %-26s %-18s %-8d %.2fEUR%n",
                     pr.getId(),
                     MenuPrincipale.troncaStringa(film != null ? film.getTitolo() : "?", 25),
                     p != null ? p.getDataOraFormattata() : "?",
@@ -510,7 +510,7 @@ public class MenuCliente {
     private void stampaMenu() {
         System.out.println();
         MenuPrincipale.stampaLinea();
-        System.out.println("  MENU CLIENTE  —  " + cliente.getNome() + " " + cliente.getCognome());
+        System.out.println("  MENU CLIENTE  -  " + cliente.getNome() + " " + cliente.getCognome());
         MenuPrincipale.stampaLinea();
         System.out.println("  [1] Cerca proiezioni");
         System.out.println("  [2] Visualizza dettagli proiezione");
@@ -533,7 +533,7 @@ public class MenuCliente {
         if (proiezioni.isEmpty()) {
             System.out.println("  Nessuna proiezione trovata.");
         } else {
-            System.out.printf("  %-4s %-28s %-14s %-18s %-8s %s%n",
+            System.out.printf("  %-4s %-28s %-18s %-18s %-8s %s%n",
                     "ID", "FILM", "GENERE", "DATA/ORA", "COSTO", "POSTI");
             MenuPrincipale.stampaLinea();
             for (Proiezione p : proiezioni) {
@@ -577,7 +577,8 @@ public class MenuCliente {
         }
         MenuPrincipale.stampaLinea();
         System.out.printf("  Data/Ora  : %s%n", p.getDataOraFormattata());
-        System.out.printf("  Biglietto : %.2f€%n", p.getCostoBiglietto());
+        String euroSimbolo = "EUR";
+        System.out.printf("  Biglietto : %.2f%s%n", p.getCostoBiglietto(), euroSimbolo);
         System.out.printf("  Posti lib.: %d / %d%n", postiLiberi, Proiezione.CAPACITA_SALA);
         MenuPrincipale.stampaLinea();
     }

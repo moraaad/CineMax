@@ -15,6 +15,9 @@ import cinemax.repository.*;
 import cinemax.service.*;
 import cinemax.ui.MenuPrincipale;
 
+import java.io.PrintStream;
+import java.nio.charset.StandardCharsets;
+
 /**
  * Classe principale dell'applicazione CineMax.
  * <p>
@@ -31,6 +34,10 @@ public class CineMax {
      * @param args argomenti da riga di comando (non utilizzati)
      */
     public static void main(String[] args) throws Exception {
+
+        // Metodi per far visualizzare nel terminale il file CineMax.jar in modo corretto (senza encoding sbagliato)
+        System.setOut(new PrintStream(System.out, true, StandardCharsets.UTF_8));
+        System.setErr(new PrintStream(System.err, true, StandardCharsets.UTF_8));
 
         // --- Repository ---
         FilmRepository filmRepo =

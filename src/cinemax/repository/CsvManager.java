@@ -54,7 +54,7 @@ public class CsvManager {
             String riga;
 
             while ((riga = reader.readLine()) != null) {
-                righe.add(riga.split(SEPARATORE));
+                righe.add(riga.split(SEPARATORE, -1));
             }
 
         } catch (IOException e) {

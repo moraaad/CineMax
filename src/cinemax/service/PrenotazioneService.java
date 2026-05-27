@@ -115,6 +115,11 @@ public class PrenotazioneService {
                 numeroBiglietti
         );
 
+        // DEBUG
+        if (id <= 0) {
+            throw new IllegalStateException("ID prenotazione non valido");
+        }
+
         prenotazioneRepository.salva(prenotazione);
     }
 

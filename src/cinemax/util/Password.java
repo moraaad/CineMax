@@ -19,7 +19,7 @@ import java.util.Base64;
 // Classe che gestisce le password
 public class Password {
 
-    // Hash con salt → restituisce "salt:hash" (Base64)
+    // Hash con salt -> restituisce "salt:hash" (Base64)
     public static String hashPassword(String password) throws Exception {
         if (password.isBlank()) throw new IllegalArgumentException("La password non puo' essere vuota");
 

@@ -30,6 +30,9 @@ public class IdGenerator {
             return 1;
         }
 
-        return ids.getLast() + 1;
+        return ids.stream()
+                .mapToLong(Long::longValue)
+                .max()
+                .orElse(0) + 1;
     }
 }

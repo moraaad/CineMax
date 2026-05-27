@@ -90,7 +90,7 @@ public class MenuBigliettaio {
      * Mostra tutte le prenotazioni per le proiezioni della giornata odierna.
      */
     private void visualizzaPrenotazioniOggi() {
-        MenuPrincipale.stampaSezione("PRENOTAZIONI DI OGGI — " +
+        MenuPrincipale.stampaSezione("PRENOTAZIONI DI OGGI - " +
                 DateUtils.formatoUi(LocalDate.now()));
 
         LocalDate oggi = LocalDate.now();
@@ -240,7 +240,7 @@ public class MenuBigliettaio {
     private void stampaMenu() {
         System.out.println();
         MenuPrincipale.stampaLinea();
-        System.out.println("  MENU BIGLIETTAIO  —  " +
+        System.out.println("  MENU BIGLIETTAIO  -  " +
                 bigliettaio.getNome() + " " + bigliettaio.getCognome());
         MenuPrincipale.stampaLinea();
         System.out.println("  [1] Prenotazioni di oggi");
@@ -310,7 +310,7 @@ public class MenuBigliettaio {
                 p != null ? p.getDataOraFormattata() : "N/D");
         MenuPrincipale.stampaLinea();
         System.out.printf("  Biglietti : %d%n", pr.getNumeroBiglietti());
-        System.out.printf("  Costo     : %.2f€ x %d = %.2f€%n",
+        System.out.printf("  Costo     : %.2fEUR x %d = %.2fEUR%n",
                 costoUnitario, pr.getNumeroBiglietti(), costoTotale);
         MenuPrincipale.stampaLinea();
     }

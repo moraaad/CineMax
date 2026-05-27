@@ -229,8 +229,8 @@ public class MenuPrincipale {
         double filtroMaxCosto = -1;
         boolean inserisciCosto = Input.leggiBoolean("Filtrare per costo biglietto?");
         if (inserisciCosto) {
-            filtroMinCosto = Input.leggiDouble("Costo minimo (€): ");
-            filtroMaxCosto = Input.leggiDouble("Costo massimo (€): ");
+            filtroMinCosto = Input.leggiDouble("Costo minimo (EUR): ");
+            filtroMaxCosto = Input.leggiDouble("Costo massimo (EUR): ");
         }
 
         // --- Applicazione filtri ---
@@ -271,12 +271,12 @@ public class MenuPrincipale {
         if (risultati.isEmpty()) {
             System.out.println("  Nessuna proiezione corrisponde ai criteri di ricerca.");
         } else {
-            System.out.printf("  %-4s %-28s %-14s %-18s %s%n",
+            System.out.printf("  %-4s %-28s %-18s %-18s %s%n",
                     "ID", "FILM", "GENERE", "DATA/ORA", "COSTO");
             stampaLinea();
             for (Proiezione p : risultati) {
                 Film film = filmService.trovaPerId(p.getFilmId());
-                System.out.printf("  %-4d %-28s %-14s %-18s %.2f€%n",
+                System.out.printf("  %-4d %-28s %-14s %-18s %.2fEUR%n",
                         p.getId(),
                         troncaStringa(film != null ? film.getTitolo() : "?", 27),
                         troncaStringa(film != null ? film.getGenere() : "?", 13),
@@ -335,7 +335,8 @@ public class MenuPrincipale {
         }
         stampaLinea();
         System.out.printf("  Data/Ora  : %s%n", p.getDataOraFormattata());
-        System.out.printf("  Biglietto : %.2f€%n", p.getCostoBiglietto());
+        String euroSimbolo = "EUR";
+        System.out.printf("  Biglietto : %.2f%s%n", p.getCostoBiglietto(), euroSimbolo);
         System.out.printf("  Posti lib.: %d / %d%n", postiLiberi, Proiezione.CAPACITA_SALA);
         stampaLinea();
         Input.attendiInvio();
@@ -356,7 +357,7 @@ public class MenuPrincipale {
 
     /** Stampa un separatore orizzontale. */
     static void stampaLinea() {
-        System.out.println("  " + "─".repeat(52));
+        System.out.println("  " + "-".repeat(100));
     }
 
     /** Stampa il titolo di una sezione con separatori. */
@@ -387,11 +388,11 @@ public class MenuPrincipale {
      *
      * @param s   stringa da troncare
      * @param max lunghezza massima
-     * @return stringa troncata (con "…" se necessario)
+     * @return stringa troncata (con "..." se necessario)
      */
     static String troncaStringa(String s, int max) {
         if (s == null) return "";
         if (s.length() <= max) return s;
-        return s.substring(0, max - 1) + "…";
+        return s.substring(0, max - 1) + "...";
     }
 }
